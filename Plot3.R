@@ -5,7 +5,7 @@ library(plyr)
 
 baltimore<-subset(data, fips == "24510")
 
-baltimoreAgr<-aggregated<-ddply(baltimore, .(year, type), summarize, sum=sum(Emissions))
+baltimoreAgr<-ddply(baltimore, .(year, type), summarize, sum=sum(Emissions))
 
 png(file="plot3.png")
 p<-ggplot(baltimoreAgr, aes(x=as.factor(year), y=sum))+

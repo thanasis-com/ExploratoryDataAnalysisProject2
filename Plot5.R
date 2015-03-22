@@ -7,10 +7,11 @@ tf<-grepl("Mobile", SCC$EI.Sector)
 sccs<-subset(SCC, tf==TRUE)
 sccs<-sccs[,1]
 
+data<-subset(data, fips == "24510")
 data<-subset(data, data$SCC %in% sccs)
 
 aggregated<-ddply(data, .(year), summarize, sum=sum(Emissions))
 
 png(file="plot5.png")
-barplot(aggregated$sum, names=aggregated$year, xlab="Year", ylab="Total Emissions", main="Emissions from motor vehicle sources")
+barplot(aggregated$sum, names=aggregated$year, xlab="Year", ylab="Total Emissions", main="Emissions from motor vehicle sources in Baltimore City")
 dev.off()
